@@ -5,7 +5,7 @@ const express = require('express');
 const accountsRouter = require('./accounts/accountsRouter');
 
 const server = express();
-
+server.use(logger);
 server.use(express.json());
 
 server.use('/api/accounts', accountsRouter);
