@@ -16,6 +16,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const account = await Accounts.getById(req.params.id);
+    res.status(200).json(account);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'The id was not retrieved' });
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const account = await Accounts.insert(req.body);
